@@ -1208,6 +1208,11 @@ export default class Drawflow {
       input.classList.add("input_"+(x+1));
       json_inputs["input_"+(x+1)] = { "connections": []};
       inputs.appendChild(input);
+      /* add label */
+      const name = document.createElement('span');
+      name.classList.add('in_name');
+      name.innerText = x;
+      input.appendChild(name);
     }
 
     const json_outputs = {}
@@ -1217,6 +1222,11 @@ export default class Drawflow {
       output.classList.add("output_"+(x+1));
       json_outputs["output_"+(x+1)] = { "connections": []};
       outputs.appendChild(output);
+      /* add label */
+      const name = document.createElement('span');
+      name.classList.add('out_name');
+      name.innerText = x;
+      output.appendChild(name);
     }
 
     const content = document.createElement('div');
@@ -1330,6 +1340,14 @@ export default class Drawflow {
       input.classList.add("input");
       input.classList.add(input_item);
       inputs.appendChild(input);
+      /* add label */
+      const name = document.createElement('span');
+      name.classList.add('in_name');
+      name.innerText = index;
+      input.appendChild(name);
+
+
+
       Object.keys(dataNode.inputs[input_item].connections).map(function(output_item, index) {
 
         var connection = document.createElementNS('http://www.w3.org/2000/svg',"svg");
@@ -1354,6 +1372,12 @@ export default class Drawflow {
       output.classList.add("output");
       output.classList.add("output_"+(x+1));
       outputs.appendChild(output);
+      /* add label */
+      const name = document.createElement('span');
+      name.classList.add('out_name');
+      name.innerText = x;
+      output.appendChild(name);
+      
     }
 
     const content = document.createElement('div');
@@ -1546,7 +1570,13 @@ export default class Drawflow {
       input.classList.add("input_"+(numInputs+1));
       const parent = this.container.querySelector('#node-'+id+' .inputs');
       parent.appendChild(input);
+      const name = document.createElement('span');
+      name.classList.add('in_name');
+      name.innerText = id;
+      input.appendChild(name);
+      console.log("Adding input ", name);
       this.updateConnectionNodes('node-'+id);
+      
 
     }
     this.drawflow.drawflow[moduleName].data[id].inputs["input_"+(numInputs+1)] = { "connections": []};
@@ -1564,6 +1594,11 @@ export default class Drawflow {
       const parent = this.container.querySelector('#node-'+id+' .outputs');
       parent.appendChild(output);
       this.updateConnectionNodes('node-'+id);
+      /* add label */
+      const name = document.createElement('span');
+      name.classList.add('out_name');
+      name.innerText = id;
+      output.appendChild(name);
 
     }
     this.drawflow.drawflow[moduleName].data[id].outputs["output_"+(numOutputs+1)] = { "connections": []};
