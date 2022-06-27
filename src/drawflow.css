@@ -208,6 +208,18 @@ header a {
   cursor: move;
   user-select: none;
 }
+
+.toolbar-separator {
+  line-height: 50px;
+  border-bottom: 1px solid var(--border-color);
+  padding-left: 20px;
+  cursor: move;
+  user-select: none;
+  font-weight: bold;
+  background-color:#ccc;
+}
+
+
 .menu {
   position: absolute;
   height: 40px;
